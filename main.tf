@@ -193,8 +193,5 @@ resource "aws_route_table_association" "public-3" {
 
 terraform {
   backend "s3" {
-    bucket = "bucketdemorts"
-    key = "dc/s3/terraform.tfstate"
-    region = "eu-west-1"
   }
 }
