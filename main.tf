@@ -191,7 +191,7 @@ resource "aws_route_table_association" "public-3" {
   route_table_id = aws_route_table.public.id
 }
 
-terrafrom {
+terraform {
   backend "s3" {
     bucket = "bucketdemorts"
     key = "dc/s3/terraform.tfstate"
