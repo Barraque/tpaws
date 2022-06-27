@@ -13,15 +13,6 @@ variable "env" {
 # On recherche la derniere AMI créée avec le Name TAG PackerAnsible-Apache
 data "aws_ami" "selected" {
   owners = ["self"]
-  filter {
-     name   = "name"
-     values = ["Packer-Ansible-${var.portt}"]
-
-  }
-  #filter {
-  #  name   = "tag:Name"
-  #  values = ["PackerAnsible-Apache"]
-  #}
   most_recent = true
 }
 
