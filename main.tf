@@ -9,7 +9,7 @@ variable "env" {
 }
 
 variable "portt" {
-  type    = int
+  type = string
   default = 80
 }
 
