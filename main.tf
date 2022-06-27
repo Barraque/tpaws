@@ -155,7 +155,7 @@ resource "aws_elb" "web-elb" {
   health_check {
     healthy_threshold   = 2
     interval            = 30
-    target              = "HTTP:${var.portt}/"
+    target              = "HTTP:${data.aws_ami.selected.tags.port}/"
     timeout             = 3
     unhealthy_threshold = 2
   }
