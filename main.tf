@@ -21,7 +21,7 @@ data "aws_ami" "selected" {
      name   = "name"
      values = ["Packer-Ansible-${var.portt}"]
 
-  #}
+  }
   #filter {
   #  name   = "tag:Name"
   #  values = ["PackerAnsible-Apache"]
