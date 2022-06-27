@@ -10,7 +10,7 @@ variable "env" {
 
 variable "portt" {
   type    = string
-  default = "${var.portt}"
+  default = "80"
 }
 
 ####################################################################
@@ -90,9 +90,9 @@ resource "aws_security_group" "web-sg-asg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
   ingress {
-    from_port       = ${var.portt}
+    from_port       = "${var.portt}"
     protocol        = "tcp"
-    to_port         = ${var.portt}
+    to_port         = "${var.portt}"
     security_groups = [aws_security_group.web-sg-elb.id] # on authorise en entrée de l'ASG que le flux venant de l'ELB
   }
   lifecycle {
@@ -110,9 +110,9 @@ resource "aws_security_group" "web-sg-elb" {
     cidr_blocks = ["0.0.0.0/0"]
   }
   ingress {
-    from_port   = ${var.portt}
+    from_port   = "${var.portt}"
     protocol    = "tcp"
-    to_port     = ${var.portt}
+    to_port     = "${var.portt}"
     cidr_blocks = ["0.0.0.0/0"]   # Normalement Ouvert sur le web sauf dans le cas d'un site web Privé(Exemple Intranet ou nous qui ne voulons pas exposer le site)
   }
   lifecycle {
@@ -159,9 +159,9 @@ resource "aws_elb" "web-elb" {
   security_groups = [aws_security_group.web-sg-elb.id]
 
   listener {
-    instance_port     = ${var.portt}
+    instance_port     = "${var.portt}"
     instance_protocol = "http"
-    lb_port           = ${var.portt}
+    lb_port           = "${var.portt}"
     lb_protocol       = "http"
   }
 
